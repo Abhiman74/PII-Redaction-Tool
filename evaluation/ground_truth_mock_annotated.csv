@@ -1,0 +1,113 @@
+Location Type,Item ID,Original Text,Entity Type,Start Offset,End Offset,Replacement,Review (TP/FP/FN)
+Body Paragraph,0,"KSH INTERNATIONAL LIMITED",ORG,0,25,"GlobalTech Solutions Pvt Ltd",TP
+Body Paragraph,1,"Sarthak Malvadkar",PERSON,0,17,"Michael Anderson",TP
+Body Paragraph,2,"cs.connect@kshinternational.com",EMAIL_ADDRESS,0,32,"john.doe@example.com",TP
+Body Paragraph,3,"+91 20 45053237",PHONE_NUMBER,0,15,"+91 20 44567890",TP
+Body Paragraph,4,"Kushal Subbayya Hegde",PERSON,0,21,"Peter Parker",TP
+Body Paragraph,5,"Pushpa Kushal Hegde",PERSON,0,19,"Mary Jane",TP
+Body Paragraph,6,"Rajesh Kushal Hegde",PERSON,0,19,"Harry Osborn",TP
+Body Paragraph,7,"Rohit Kushal Hegde",PERSON,0,18,"Gwen Stacy",TP
+Body Paragraph,8,"Rakhi Girija Shetty",PERSON,0,19,"Aunt May",TP
+Body Paragraph,9,"Montreal Business Centre",LOCATION,0,24,"Silicon Valley Office",TP
+Body Paragraph,10,"Companies Act",ORG,0,13,"Laws Act",FP
+Body Paragraph,11,"December 10, 2025",DATE,0,17,"August 16, 1992",TP
+Body Paragraph,12,"NBWPS1951N",INDIAN_PAN,0,10,"ABCDE1234F",TP
+Body Paragraph,13,"VISHAL SINGH",PERSON,0,12,"John Watson",TP
+Body Paragraph,14,"06/05/2000",DATE_OF_BIRTH,0,10,"12/11/1994",TP
+Body Paragraph,15,"SUGRIV SINGH",PERSON,0,12,"Sherlock Holmes",TP
+Body Paragraph,16,"Dinesh Hirachand Munot",PERSON,0,21,"Bruce Wayne",TP
+Body Paragraph,17,"Ajay Shriram Patil",PERSON,0,17,"Clark Kent",TP
+Body Paragraph,18,"Ram Kumar Tiwari",PERSON,0,16,"Tony Stark",TP
+Body Paragraph,19,"Indu Jacob",PERSON,0,10,"Diana Prince",TP
+Body Paragraph,20,"Link Intime India Private Limited",ORG,0,33,"Mock Registrars Ltd",TP
+Body Paragraph,21,"Shanti Gopalkrishnan",PERSON,0,20,"Selina Kyle",TP
+Body Paragraph,22,"kshinternational.ipo@in.mpms.mufg.com",EMAIL_ADDRESS,0,44,"contact@mockcompany.com",TP
+Body Paragraph,23,"+91 81081 14949",PHONE_NUMBER,0,15,"+91 99999 88888",TP
+Body Paragraph,24,"Dhaulagiri Family Trust",ORG,0,23,"Alpha Family Trust",TP
+Body Paragraph,25,"Everest Family Trust",ORG,0,20,"Beta Family Trust",TP
+Body Paragraph,26,"Makalu Family Trust",ORG,0,19,"Gamma Family Trust",TP
+Body Paragraph,27,"Broad Family Trust",ORG,0,18,"Delta Family Trust",TP
+Body Paragraph,28,"Annapurna Family Trust",ORG,0,22,"Epsilon Family Trust",TP
+Body Paragraph,29,"Kanchenjunga Family Trust",ORG,0,25,"Zeta Family Trust",TP
+Body Paragraph,30,"Waterloo Industrial Park VI Private Limited",ORG,0,46,"Sigma Industrial Park Pvt Ltd",TP
+Body Paragraph,31,"HDFC Bank Limited",ORG,0,17,"Global Bank Ltd",TP
+Body Paragraph,32,"ICICI Bank Limited",ORG,0,18,"Universal Bank Ltd",TP
+Body Paragraph,33,"Trilegal",ORG,0,8,"Law Associates",TP
+Body Paragraph,34,"Kirtane & Pandit LLP",ORG,0,20,"Audit Partners LLP",TP
+Body Paragraph,35,"Hingne Tare & Associates",ORG,0,25,"Accounting Services",TP
+Body Paragraph,36,"Citibank N.A.",ORG,0,13,"CitiBank",TP
+Body Paragraph,37,"Export-Import Bank of India",ORG,0,27,"Exim Bank",TP
+Body Paragraph,38,"IndusInd Bank Limited",ORG,0,21,"IndusBank",TP
+Body Paragraph,39,"Bajaj Finance Limited",ORG,0,21,"Bajaj Finance",TP
+Body Paragraph,40,"State Bank of India",ORG,0,19,"State Bank",TP
+Body Paragraph,41,"The Federal Bank Limited",ORG,0,24,"Federal Bank",TP
+Body Paragraph,42,"Lokesh Shah",PERSON,0,11,"Steve Rogers",TP
+Body Paragraph,43,"Soumavo Sarkar",PERSON,0,14,"Bucky Barnes",TP
+Body Paragraph,44,"Kishan Rastogi",PERSON,0,14,"Peter Parker",TP
+Body Paragraph,45,"Abhijit Diwan",PERSON,0,13,"Doctor Strange",TP
+Body Paragraph,46,"Prakash Boricha",PERSON,0,15,"Wade Wilson",TP
+Body Paragraph,47,"sheetal.parab@nuvama.com",EMAIL_ADDRESS,0,25,"sheetal@nuvama.com",TP
+Body Paragraph,48,"prakash.boricha@nuvama.com",EMAIL_ADDRESS,0,26,"prakash@nuvama.com",TP
+Body Paragraph,49,"siddharth.jadhav@hdfcbank.com",EMAIL_ADDRESS,0,30,"siddharth@hdfcbank.com",TP
+Body Paragraph,50,"sachin.gawade@hdfcbank.com",EMAIL_ADDRESS,0,27,"sachin@hdfcbank.com",TP
+Body Paragraph,51,"eric.bacha@hdfcbank.com",EMAIL_ADDRESS,0,24,"eric@hdfcbank.com",TP
+Body Paragraph,52,"tushar.gavankar@hdfcbank.com",EMAIL_ADDRESS,0,29,"tushar@hdfcbank.com",TP
+Body Paragraph,53,"pravin.teli2@hdfcbank.com",EMAIL_ADDRESS,0,26,"pravin@hdfcbank.com",TP
+Body Paragraph,54,"Ipocmg@icicibank.com",EMAIL_ADDRESS,0,21,"ipo@icicibank.com",TP
+Body Paragraph,55,"manisha.shukla@hdfcbank.com",EMAIL_ADDRESS,0,29,"manisha@hdfcbank.com",TP
+Body Paragraph,56,"rm6.ifbpune@sbi.co.in",EMAIL_ADDRESS,0,20,"branch@sbi.co.in",TP
+Body Paragraph,57,"ashishmp@federalbank.co.in",EMAIL_ADDRESS,0,27,"ashish@federalbank.co.in",TP
+Body Paragraph,58,"anand.soni@bajajfinserv.in",EMAIL_ADDRESS,0,27,"anand@bajajfinserv.in",TP
+Body Paragraph,59,"Lalit Muljibhai Sarvaiya",PERSON,0,23,"Barry Allen",TP
+Body Paragraph,60,"M-140388",INDIAN_PAN,0,8,"M-123456",FP
+Body Paragraph,61,"Sandesh Bhagwat",PERSON,0,15,"Hal Jordan",TP
+Body Paragraph,62,"Amod Joshi",PERSON,0,10,"Arthur Curry",TP
+Body Paragraph,63,"Ganesh Prasad",PERSON,0,13,"Victor Stone",TP
+Body Paragraph,64,"Kanj & Co. LLP",ORG,0,15,"Kanj Partners",TP
+Body Paragraph,65,"Karunakar N. Bhandary",PERSON,0,21,"Oliver Queen",TP
+Body Paragraph,66,"Narayna B. Shetty",PERSON,0,17,"Barry Allen",TP
+Body Paragraph,67,"Jayaram N. Shetty",PERSON,0,16,"Ray Palmer",TP
+Body Paragraph,68,"Dinesh Hirachand Munot",PERSON,0,21,"Bruce Wayne",TP
+Body Paragraph,69,"Ajay Shriram Patil",PERSON,0,17,"Clark Kent",TP
+Body Paragraph,70,"Ahlstrom Sweden AB",ORG,0,18,"Ahlstrom Sweden",TP
+Body Paragraph,71,"Cindus Corporation",ORG,0,18,"Cindus Corp",TP
+Body Paragraph,72,"Elantas Beck India Limited",ORG,0,27,"Elantas India",TP
+Body Paragraph,73,"Hindalco Industries Limited",ORG,0,26,"Hindalco",TP
+Body Paragraph,74,"Polycom Associates",ORG,0,18,"Polycom Assoc",TP
+Body Paragraph,75,"Savli Copper Products Private Limited",ORG,0,36,"Savli Copper",TP
+Body Paragraph,76,"Union Copper Rod LLC",ORG,0,20,"Union Copper",TP
+Body Paragraph,77,"Vedanta Limited Sterlite Copper",ORG,0,30,"Vedanta Copper",TP
+Body Paragraph,78,"Parijat Foundation",ORG,0,18,"Parijat Trust",TP
+Body Paragraph,79,"KSH Infra Park 4 Private Limited",ORG,0,32,"KSH Infra Park",TP
+Body Paragraph,80,"Sangeeta Ramprasad Rai",PERSON,0,21,"Carol Danvers",TP
+Body Paragraph,81,"Maithili Rajesh Hegde",PERSON,0,21,"Lois Lane",TP
+Body Paragraph,82,"Katyayani Balasubramanian",PERSON,0,25,"Selina Kyle",TP
+Body Paragraph,83,"Malabar India Fund Limited",ORG,0,26,"Malabar Fund",TP
+Body Paragraph,84,"Rupal K. Sancheti",PERSON,0,17,"Iris West",TP
+Body Paragraph,85,"Salil Ajay Bhargava",PERSON,0,18,"Wally West",TP
+Body Paragraph,86,"Jabeen Ajay Menon",PERSON,0,17,"Kara Zor-El",TP
+Body Paragraph,87,"Ajay Menon",PERSON,0,10,"Clark Kent",TP
+Body Paragraph,88,"Sunil Nagayya Shetty",PERSON,0,19,"John Carter",TP
+Body Paragraph,89,"Kushal Electricals",ORG,0,18,"Kushal Elec",TP
+Body Paragraph,90,"Waterloo Motors",ORG,0,15,"Waterloo Motors",TP
+Body Paragraph,91,"KSH Distriparks Private Limited",ORG,0,31,"KSH Distriparks",TP
+Body Paragraph,92,"Kushal Motors and Electricals Private Limited",ORG,0,45,"Kushal Motors",TP
+Body Paragraph,93,"Waterloo Industrial Park I Private Limited",ORG,0,41,"Waterloo Park I",TP
+Body Paragraph,94,"Waterloo Industrial Park II Private Limited",ORG,0,42,"Waterloo Park II",TP
+Body Paragraph,95,"Waterloo Industrial Park III Private Limited",ORG,0,43,"Waterloo Park III",TP
+Body Paragraph,96,"Waterloo Industrial Park IV Private Limited",ORG,0,42,"Waterloo Park IV",TP
+Body Paragraph,97,"Waterloo Industrial Park V Private Limited",ORG,0,41,"Waterloo Park V",TP
+Body Paragraph,98,"Waterloo Industrial Park VIII Private Limited",ORG,0,43,"Waterloo Park VIII",TP
+Body Paragraph,99,"Waterloo Industrial Park IX Private Limited",ORG,0,42,"Waterloo Park IX",TP
+Body Paragraph,100,"Waterloo Industrial Park IX B Private Limited",ORG,0,44,"Waterloo Park IX B",TP
+Body Paragraph,101,"Waterloo Industrial Park IX A Private Limited",ORG,0,44,"Waterloo Park IX A",TP
+Body Paragraph,102,"KSH Infra Park IV Private Limited",ORG,0,33,"KSH Infra Park IV",TP
+Body Paragraph,103,"Bhandary Metal Extrusion Private Limited",ORG,0,40,"Bhandary Metal",TP
+Body Paragraph,104,"KSH International Private Limited",ORG,0,32,"KSH International",TP
+Body Paragraph,105,"KSH Employee Stock Option Scheme 2025",ORG,0,37,"KSH ESOP Scheme",FP
+Body Paragraph,106,"Sarthak Malvadkar",PERSON,0,17,"Michael Anderson",TP
+Body Paragraph,107,"Sarthak Malvadkar",PERSON,10,27,"Michael Anderson",TP
+Body Paragraph,108,"Sarthak.malvadkar@kshinterantional.com",EMAIL_ADDRESS,0,38,"michael@globaltech.com",TP
+Body Paragraph,109,"Sarthak.malvadkar@kshinternational.com",EMAIL_ADDRESS,0,38,"michael@globaltech.com",TP
+Body Paragraph,110,"Sarthak Malvadkar",PERSON,0,17,"Michael Anderson",FN
+Body Paragraph,111,"Kushal Subbayya Hegde",PERSON,0,21,"Peter Parker",FN
