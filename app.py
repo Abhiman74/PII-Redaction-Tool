@@ -88,6 +88,89 @@ def main():
     st.sidebar.markdown("---")
     run_redaction = st.sidebar.button("🚀 Run Redactor", type="primary", disabled=uploaded_file is None)
 
+    # 1. Global Redaction Execution Block (Runs regardless of active tab)
+    if run_redaction and uploaded_file is not None:
+        with st.spinner("Processing document... This may take a few moments for large files."):
+            try:
+                # Create temp directories to store file
+                with tempfile.TemporaryDirectory() as tmpdir:
+                    input_path = os.path.join(tmpdir, uploaded_file.name)
+                    # Save uploaded file locally
+                    with open(input_path, "wb") as f:
+                        f.write(uploaded_file.getbuffer())
+
+                    docx_path = input_path
+                    # If PDF, convert it first
+                    if uploaded_file.name.endswith(".pdf"):
+                        docx_path = os.path.join(tmpdir, "converted.docx")
+                        from pdf2docx import Converter
+                        cv = Converter(input_path)
+                        cv.convert(docx_path, start=0, end=None)
+                        cv.close()
+
+                    # Initialize Redactor
+                    redactor = DocxRedactor(use_presidio=True, use_spacy=True)
+                    
+                    # Custom filter override based on checkboxes
+                    active_types = set()
+                    if redact_names: active_types.add("PERSON")
+                    if redact_emails: active_types.add("EMAIL_ADDRESS")
+                    if redact_phones: active_types.add("PHONE_NUMBER")
+                    if redact_orgs: active_types.update(["ORG", "COMPANY"])
+                    if redact_locations: active_types.update(["GPE", "LOCATION", "LOC", "FAC"])
+                    if redact_ssn: active_types.add("US_SSN")
+                    if redact_cards: active_types.add("CREDIT_CARD")
+                    if redact_dob: active_types.add("DATE_OF_BIRTH")
+                    if redact_ips: active_types.add("IP_ADDRESS")
+                    if redact_pan: active_types.add("INDIAN_PAN")
+                    if redact_pins: active_types.add("POSTAL_CODE")
+
+                    # Override detector detect to filter based on checkboxes
+                    original_detect = redactor.detector.detect
+                    def filtered_detect(text: str):
+                        entities = original_detect(text)
+                        return [e for e in entities if e.entity_type in active_types]
+                    redactor.detector.detect = filtered_detect
+
+                    # Redact
+                    output_path = os.path.join(tmpdir, "redacted.docx")
+                    total_redactions = redactor.redact_document(docx_path, output_path)
+
+                    # Save to session state so we can access across re-runs
+                    with open(output_path, "rb") as f:
+                        st.session_state["redacted_data"] = f.read()
+                    st.session_state["redaction_log"] = redactor.redaction_log
+                    st.session_state["total_redactions"] = total_redactions
+                    st.session_state["processed_filename"] = uploaded_file.name
+
+                    # Save to output folder locally as backup
+                    os.makedirs("output", exist_ok=True)
+                    backup_path = os.path.join("output", "Red_Herring_Prospectus_Redacted.docx")
+                    with open(backup_path, "wb") as f_backup:
+                        f_backup.write(st.session_state["redacted_data"])
+
+                    st.balloons()
+
+            except Exception as e:
+                st.error(f"Failed to redact document: {e}")
+                import traceback
+                st.code(traceback.format_exc())
+
+    # 2. Global Success & Download Banner (Always visible at the top once processed)
+    if "redacted_data" in st.session_state:
+        st.success(f"🎉 Redaction Completed! Processed **{st.session_state['total_redactions']}** PII entities in `{st.session_state['processed_filename']}`.")
+        
+        # Provide download button
+        output_name = st.session_state['processed_filename'].rsplit(".", 1)[0] + "_Redacted.docx"
+        st.download_button(
+            label="📥 Download Redacted DOCX",
+            data=st.session_state["redacted_data"],
+            file_name=output_name,
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            type="primary"
+        )
+        st.markdown("---")
+
     # Tabs
     tab_redact, tab_logs, tab_metrics = st.tabs([
         "🛡️ Document Redactor", 
@@ -100,7 +183,7 @@ def main():
         if uploaded_file is None:
             st.info("👈 Please upload a PDF or DOCX file in the sidebar to begin.")
         else:
-            st.success(f"Loaded: `{uploaded_file.name}` ({uploaded_file.size / 1024:.1f} KB)")
+            st.write(f"Loaded: `{uploaded_file.name}` ({uploaded_file.size / 1024:.1f} KB)")
             
             # Show configuration preview
             col1, col2 = st.columns(2)
@@ -125,83 +208,6 @@ def main():
                 st.write("- **Format**: Microsoft Word (.docx)")
                 st.write("- **Consistency**: Every repeating entity maps to the same deterministic fake value")
                 st.write("- **Styles**: Preserves fonts, tables, cell structures, headers, and footers")
-
-            if run_redaction:
-                with st.spinner("Processing document... This may take a few moments for large files."):
-                    try:
-                        # Create temp directories to store file
-                        with tempfile.TemporaryDirectory() as tmpdir:
-                            input_path = os.path.join(tmpdir, uploaded_file.name)
-                            # Save uploaded file locally
-                            with open(input_path, "wb") as f:
-                                f.write(uploaded_file.getbuffer())
-
-                            docx_path = input_path
-                            # If PDF, convert it first
-                            if uploaded_file.name.endswith(".pdf"):
-                                docx_path = os.path.join(tmpdir, "converted.docx")
-                                from pdf2docx import Converter
-                                cv = Converter(input_path)
-                                cv.convert(docx_path, start=0, end=None)
-                                cv.close()
-
-                            # Initialize Redactor
-                            redactor = DocxRedactor(use_presidio=True, use_spacy=True)
-                            
-                            # Custom filter override based on checkboxes
-                            active_types = set()
-                            if redact_names: active_types.add("PERSON")
-                            if redact_emails: active_types.add("EMAIL_ADDRESS")
-                            if redact_phones: active_types.add("PHONE_NUMBER")
-                            if redact_orgs: active_types.update(["ORG", "COMPANY"])
-                            if redact_locations: active_types.update(["GPE", "LOCATION", "LOC", "FAC"])
-                            if redact_ssn: active_types.add("US_SSN")
-                            if redact_cards: active_types.add("CREDIT_CARD")
-                            if redact_dob: active_types.add("DATE_OF_BIRTH")
-                            if redact_ips: active_types.add("IP_ADDRESS")
-                            if redact_pan: active_types.add("INDIAN_PAN")
-                            if redact_pins: active_types.add("POSTAL_CODE")
-
-                            # Override detector detect to filter based on checkboxes
-                            original_detect = redactor.detector.detect
-                            def filtered_detect(text: str):
-                                entities = original_detect(text)
-                                return [e for e in entities if e.entity_type in active_types]
-                            redactor.detector.detect = filtered_detect
-
-                            # Redact
-                            output_path = os.path.join(tmpdir, "redacted.docx")
-                            total_redactions = redactor.redact_document(docx_path, output_path)
-
-                            # Save to session state so we can access across re-runs
-                            with open(output_path, "rb") as f:
-                                st.session_state["redacted_data"] = f.read()
-                            st.session_state["redaction_log"] = redactor.redaction_log
-                            st.session_state["total_redactions"] = total_redactions
-                            st.session_state["processed_filename"] = uploaded_file.name
-
-                            st.balloons()
-
-                    except Exception as e:
-                        st.error(f"Failed to redact document: {e}")
-                        import traceback
-                        st.code(traceback.format_exc())
-
-            # Download button if processed data is in session state
-            if "redacted_data" in st.session_state:
-                st.markdown("---")
-                st.markdown("### 🎉 Redaction Completed!")
-                st.write(f"Processed **{st.session_state['total_redactions']}** PII entities in `{st.session_state['processed_filename']}`.")
-                
-                # Provide download button
-                output_name = st.session_state['processed_filename'].rsplit(".", 1)[0] + "_Redacted.docx"
-                st.download_button(
-                    label="📥 Download Redacted DOCX",
-                    data=st.session_state["redacted_data"],
-                    file_name=output_name,
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-                    type="primary"
-                )
 
     # LOGS TAB
     with tab_logs:
