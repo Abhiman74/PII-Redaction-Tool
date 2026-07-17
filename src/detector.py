@@ -27,9 +27,15 @@ class PresidioDetector(BaseDetector):
     def __init__(self):
         try:
             from presidio_analyzer import AnalyzerEngine
-            # Initialize Presidio Analyzer Engine
-            # Note: Presidio uses a default spaCy model under the hood
-            self.analyzer = AnalyzerEngine()
+            from presidio_analyzer.nlp_engine import NlpEngineProvider
+            # Configure Presidio to use lightweight en_core_web_sm model to prevent runtime downloads and OOM
+            configuration = {
+                "nlp_engine_name": "spacy",
+                "models": [{"lang_code": "en", "model_name": "en_core_web_sm"}]
+            }
+            provider = NlpEngineProvider(nlp_configuration=configuration)
+            nlp_engine = provider.create_engine()
+            self.analyzer = AnalyzerEngine(nlp_engine=nlp_engine)
         except ImportError as e:
             logger.error("Presidio is not installed: %s", e)
             raise RuntimeError("presidio-analyzer is required but not installed.") from e
