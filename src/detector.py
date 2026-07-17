@@ -70,7 +70,7 @@ class SpacyDetector(BaseDetector):
     """
     PII Detector using spaCy en_core_web_lg model.
     """
-    def __init__(self, model_name: str = "en_core_web_lg"):
+    def __init__(self, model_name: str = "en_core_web_sm"):
         try:
             import spacy
             try:
